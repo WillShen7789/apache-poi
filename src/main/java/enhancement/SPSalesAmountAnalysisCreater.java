@@ -15,7 +15,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class SPSalesAmountAnalysisCreator {
+public class SPSalesAmountAnalysisCreater {
 	
 	static final String TARGET_DIR = "src\\main\\resources\\source\\enhancement";
 	
