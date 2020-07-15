@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class OdmSPSalesAmountTVos {
-
+		
 	private List<String> shipDateMonth;
 	private List<BigDecimal> nbAmount;
 	private List<BigDecimal> dtAmount;
@@ -13,6 +13,8 @@ public class OdmSPSalesAmountTVos {
 	private List<BigDecimal> prjAmount;
 	private List<BigDecimal> totalAmount;
 	private List<BigDecimal> percent;
+
+	private int size = 0;
 	
 	public List<String> getShipDateMonth() {
 		return shipDateMonth;
@@ -62,5 +64,10 @@ public class OdmSPSalesAmountTVos {
 	public void setPercent(List<BigDecimal> percent) {
 		this.percent = percent;
 	}
-
+	public int getSize() {
+		return size;
+	}
+	public void setSize(int size) {
+		this.size = size;
+	}
 }
