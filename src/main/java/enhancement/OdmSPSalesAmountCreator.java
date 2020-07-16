@@ -12,11 +12,13 @@ import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DataFormat;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellReference;
-import org.apache.poi.xssf.usermodel.XSSFCell;
 
 public class OdmSPSalesAmountCreator {
 
+	static final String ODM_SP_SALES_AMOUNT_SHEET_NAME = "ODM SP Sales Amount"; 
+	
 	static final String MODEL_STYLE_KEY = "modelStyle";
 	
 	static final String NB_STYLE_KEY = "nbStyle";
@@ -33,23 +35,11 @@ public class OdmSPSalesAmountCreator {
 
 	private Map<String,CellStyle> styleMap = new HashMap<String,CellStyle>();
 	
-	public DataFormat getDataFormat() {
-		return dataFormat;
-	}
-	
-	public void setDataFormat(DataFormat dataFormat) {
-		this.dataFormat = dataFormat;
-	}
-
-	public Sheet getTargetSheet() {
-		return targetSheet;
-	}
-
-	public void setTargetSheet(Sheet targetSheet) {
-		this.targetSheet = targetSheet;
-	}
-
-	public void init() {
+	public void init(Workbook workbook) {
+		
+		targetSheet = workbook.getSheet(ODM_SP_SALES_AMOUNT_SHEET_NAME);
+		this.dataFormat = workbook.createDataFormat();
+		
 		Row row = this.targetSheet.getRow(1);
 		Cell cell = row.getCell(1);
 		CellStyle style = cell.getCellStyle();
@@ -119,17 +109,6 @@ public class OdmSPSalesAmountCreator {
 		vo.setTotalAmount(new BigDecimal("1.86"));
 		vo.setPercent(new BigDecimal("0.00439732095238833"));
 		vos.add(vo);
-		
-//		vo = new OdmSPSalesAmountVo();
-//		vo.setShipDateMonth("Total");
-//		vo.setNbAmount(new BigDecimal("1.47"));
-//		vo.setDtAmount(new BigDecimal("0.18"));
-//		vo.setSvrAmount(new BigDecimal("0.00"));
-//		vo.setMntAmount(new BigDecimal("0.12"));
-//		vo.setPrjAmount(new BigDecimal("0.03"));
-//		vo.setTotalAmount(new BigDecimal("1.86"));
-//		vo.setPercent(new BigDecimal("0.00439732095238833"));
-//		vos.add(vo);
 		
 		return vos;
 	}
