@@ -100,29 +100,21 @@ public class SPSalesAmountBarChartCreator {
 		SPSalesAmountBarCharVo vo = new SPSalesAmountBarCharVo();
 		vo.setShipDateMonth("2020-01");
 		vo.setBsAmount(new BigDecimal("0.93426605"));
-//		vo.setOdmPartsAmount(new BigDecimal("1.86"));
-//		vo.setFgAmount(new BigDecimal("423.53"));
 		vos.add(vo);
 		
 		vo = new SPSalesAmountBarCharVo();
 		vo.setShipDateMonth("2020-02");
 		vo.setBsAmount(new BigDecimal("1.05057919"));
-//		vo.setOdmPartsAmount(new BigDecimal("0.74"));
-//		vo.setFgAmount(new BigDecimal("423.53"));
 		vos.add(vo);
 		
 		vo = new SPSalesAmountBarCharVo();
 		vo.setShipDateMonth("2020-03");
 		vo.setBsAmount(new BigDecimal("1.41310465"));
-//		vo.setOdmPartsAmount(new BigDecimal("3.43"));
-//		vo.setFgAmount(new BigDecimal("752.21"));
 		vos.add(vo);
 		
 		vo = new SPSalesAmountBarCharVo();
 		vo.setShipDateMonth("2020-04");
 		vo.setBsAmount(new BigDecimal("0"));
-//		vo.setOdmPartsAmount(new BigDecimal("2.16"));
-//		vo.setFgAmount(new BigDecimal("0"));
 		vos.add(vo);
 		
 		return vos;
@@ -150,20 +142,6 @@ public class SPSalesAmountBarChartCreator {
 			} else {
 				tvos.getBsAmount().add(vo.getBsAmount());
 			}
-//			if(tvos.getOdmPartsAmount() == null) {
-//				List<BigDecimal> odmPartsAmount = new ArrayList<BigDecimal>();
-//				odmPartsAmount.add(vo.getOdmPartsAmount());
-//				tvos.setOdmPartsAmount(odmPartsAmount);
-//			} else {
-//				tvos.getOdmPartsAmount().add(vo.getOdmPartsAmount());
-//			}
-//			if(tvos.getFgAmount() == null) {
-//				List<BigDecimal> fgAmount = new ArrayList<BigDecimal>();
-//				fgAmount.add(vo.getFgAmount());
-//				tvos.setFgAmount(fgAmount);
-//			} else {
-//				tvos.getFgAmount().add(vo.getFgAmount());
-//			}
 		}
 		return tvos;
 	}
@@ -203,7 +181,6 @@ public class SPSalesAmountBarChartCreator {
 		rowIdx++;
 		
 		row = this.targetSheet.getRow(rowIdx);
-//		List<BigDecimal> dtAmounts = tVos.getOdmPartsAmount();
 		this.setOdmParts(shipDateMonths, row, colIdx);
 		rowIdx++;
 		
@@ -212,7 +189,6 @@ public class SPSalesAmountBarChartCreator {
 		rowIdx++;
 		
 		row = this.targetSheet.getRow(rowIdx);
-//		List<BigDecimal> mntAmounts = tVos.getFgAmount();
 		this.setFGs(shipDateMonths, row, colIdx);
 		rowIdx++;
 		

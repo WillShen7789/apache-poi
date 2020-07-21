@@ -62,181 +62,88 @@ public class OdmSPSalesAmountCreator {
 	}
 	
 	public void generateWorkbook() {
-//    	List<OdmSPSalesAmountVo> datas = this.getData();
-//    	OdmSPSalesAmountTVos tVos = this.transferData(datas);
-		List<String> shipDateMonths = this.getData();
-    	this.setDataToSheet(shipDateMonths);
+		List<OdmSPSalesAmountVo> data = this.getData();
+		OdmSPSalesAmountTVos tVos = this.transferData(data);
+		this.setDataToSheet(tVos);
 	}
 	
-//	private List<OdmSPSalesAmountVo> getData(){
-//		
-//		List<OdmSPSalesAmountVo> vos = new ArrayList<OdmSPSalesAmountVo>();
-//		
-//		OdmSPSalesAmountVo vo = new OdmSPSalesAmountVo();
-//		vo.setShipDateMonth("2020-01");
-//		vo.setNbAmount(new BigDecimal("1.47"));
-//		vo.setDtAmount(new BigDecimal("0.18"));
-//		vo.setSvrAmount(new BigDecimal("0.00"));
-//		vo.setMntAmount(new BigDecimal("0.12"));
-//		vo.setPrjAmount(new BigDecimal("0.03"));
-//		vo.setTotalAmount(new BigDecimal("1.86"));
-//		vo.setPercent(new BigDecimal("0.00439732095238833"));
-//		vos.add(vo);
-//		
-//		vo = new OdmSPSalesAmountVo();
-//		vo.setShipDateMonth("2020-02");
-//		vo.setNbAmount(new BigDecimal("1.47"));
-//		vo.setDtAmount(new BigDecimal("0.18"));
-//		vo.setSvrAmount(new BigDecimal("0.00"));
-//		vo.setMntAmount(new BigDecimal("0.12"));
-//		vo.setPrjAmount(new BigDecimal("0.03"));
-//		vo.setTotalAmount(new BigDecimal("1.86"));
-//		vo.setPercent(new BigDecimal("0.00439732095238833"));
-//		vos.add(vo);
-//		
-//		vo = new OdmSPSalesAmountVo();
-//		vo.setShipDateMonth("2020-03");
-//		vo.setNbAmount(new BigDecimal("1.47"));
-//		vo.setDtAmount(new BigDecimal("0.18"));
-//		vo.setSvrAmount(new BigDecimal("0.00"));
-//		vo.setMntAmount(new BigDecimal("0.12"));
-//		vo.setPrjAmount(new BigDecimal("0.03"));
-//		vo.setTotalAmount(new BigDecimal("1.86"));
-//		vo.setPercent(new BigDecimal("0.00439732095238833"));
-//		vos.add(vo);
-//		
-//		vo = new OdmSPSalesAmountVo();
-//		vo.setShipDateMonth("2020-04");
-//		vo.setNbAmount(new BigDecimal("1.47"));
-//		vo.setDtAmount(new BigDecimal("0.18"));
-//		vo.setSvrAmount(new BigDecimal("0.00"));
-//		vo.setMntAmount(new BigDecimal("0.12"));
-//		vo.setPrjAmount(new BigDecimal("0.03"));
-//		vo.setTotalAmount(new BigDecimal("1.86"));
-//		vo.setPercent(new BigDecimal("0.00439732095238833"));
-//		vos.add(vo);
-//		
-//		return vos;
-//	}
-	
-//	private OdmSPSalesAmountTVos transferData(List<OdmSPSalesAmountVo> data) {
-//		OdmSPSalesAmountTVos tvos = new OdmSPSalesAmountTVos();
-//		if(data==null || data.size() <= 0) {
-//			return tvos;
-//		}
-//		for(int i=0;i<data.size();i++) {
-//			OdmSPSalesAmountVo vo = data.get(i);;
-//			if(tvos.getShipDateMonth() == null) {
-//				List<String> shipDateMonths = new ArrayList<String>();
-//				shipDateMonths.add(vo.getShipDateMonth());
-//				tvos.setShipDateMonth(shipDateMonths);
-//			} else {
-//				tvos.getShipDateMonth().add(vo.getShipDateMonth());
-//			}
-//			if(tvos.getNbAmount() == null) {
-//				List<BigDecimal> nbAmounts = new ArrayList<BigDecimal>();
-//				nbAmounts.add(vo.getNbAmount());
-//				tvos.setNbAmount(nbAmounts);
-//			} else {
-//				tvos.getNbAmount().add(vo.getNbAmount());
-//			}
-//			if(tvos.getDtAmount() == null) {
-//				List<BigDecimal> dtAmounts = new ArrayList<BigDecimal>();
-//				dtAmounts.add(vo.getDtAmount());
-//				tvos.setDtAmount(dtAmounts);
-//			} else {
-//				tvos.getDtAmount().add(vo.getDtAmount());
-//			}
-//			if(tvos.getSvrAmount() == null) {
-//				List<BigDecimal> svrAmounts = new ArrayList<BigDecimal>();
-//				svrAmounts.add(vo.getSvrAmount());
-//				tvos.setSvrAmount(svrAmounts);
-//			} else {
-//				tvos.getSvrAmount().add(vo.getSvrAmount());
-//			}
-//			if(tvos.getMntAmount() == null) {
-//				List<BigDecimal> mntAmounts = new ArrayList<BigDecimal>();
-//				mntAmounts.add(vo.getMntAmount());
-//				tvos.setMntAmount(mntAmounts);
-//			} else {
-//				tvos.getMntAmount().add(vo.getMntAmount());
-//			}
-//			if(tvos.getPrjAmount() == null) {
-//				List<BigDecimal> prjAmounts = new ArrayList<BigDecimal>();
-//				prjAmounts.add(vo.getPrjAmount());
-//				tvos.setPrjAmount(prjAmounts);
-//			} else {
-//				tvos.getPrjAmount().add(vo.getPrjAmount());
-//			}
-//			if(tvos.getTotalAmount() == null) {
-//				List<BigDecimal> totalAmounts = new ArrayList<BigDecimal>();
-//				totalAmounts.add(vo.getTotalAmount());
-//				tvos.setTotalAmount(totalAmounts);
-//			} else {
-//				tvos.getTotalAmount().add(vo.getTotalAmount());
-//			}
-//			if(tvos.getPercent() == null) {
-//				List<BigDecimal> percents = new ArrayList<BigDecimal>();
-//				percents.add(vo.getPercent());
-//				tvos.setPercent(percents);
-//			} else {
-//				tvos.getPercent().add(vo.getPercent());
-//			}			
-//		}
-//		return tvos;
-//	}
-	
-	private List<String> getData(){
-		List<String> shipDateMonths = new ArrayList<String>();
-		shipDateMonths.add("2020-01");
-		shipDateMonths.add("2020-02");
-		shipDateMonths.add("2020-03");
-		shipDateMonths.add("2020-04");
+	private List<OdmSPSalesAmountVo> getData(){
+		List<OdmSPSalesAmountVo> shipDateMonths = new ArrayList<OdmSPSalesAmountVo>();
+		OdmSPSalesAmountVo vo = new OdmSPSalesAmountVo();
+		vo.setShipDateMonth("2020-01");
+		shipDateMonths.add(vo);
+		
+		vo = new OdmSPSalesAmountVo();
+		vo.setShipDateMonth("2020-02");
+		shipDateMonths.add(vo);
+		
+		vo = new OdmSPSalesAmountVo();
+		vo.setShipDateMonth("2020-03");
+		shipDateMonths.add(vo);
+		
+		vo = new OdmSPSalesAmountVo();
+		vo.setShipDateMonth("2020-04");
+		shipDateMonths.add(vo);
+		
 	    return shipDateMonths;
 	}
 	
-	private void setDataToSheet(List<String> shipDateMonths) {
+	private OdmSPSalesAmountTVos transferData(List<OdmSPSalesAmountVo> data) {
+		OdmSPSalesAmountTVos tvos = new OdmSPSalesAmountTVos();
+		if(data==null || data.size() <= 0) {
+			return tvos;
+		}
+		tvos.setRowSize(data.size());
+		for(int i=0;i<data.size();i++) {
+			OdmSPSalesAmountVo vo = data.get(i);;
+			if(tvos.getShipDateMonth() == null) {
+				List<String> shipDateMonths = new ArrayList<String>();
+				shipDateMonths.add(vo.getShipDateMonth());
+				tvos.setShipDateMonth(shipDateMonths);
+			} else {
+				tvos.getShipDateMonth().add(vo.getShipDateMonth());
+			}
+		}
+		return tvos;
+	}
+	
+	private void setDataToSheet(OdmSPSalesAmountTVos tVos) {
     	
     	int rowIdx = START_ROW_INDEX;
-		Row row = this.targetSheet.getRow(rowIdx);
 		int colIdx = START_COLUMN_INDEX;
 		
-//		List<String> shipDateMonths = tVos.getShipDateMonth();
+		Row row = this.targetSheet.getRow(rowIdx);
+		
+		List<String> shipDateMonths = tVos.getShipDateMonth();
+		
 		this.setShipDateMonths(shipDateMonths,row,colIdx);
 		rowIdx++;
     	
 		row = this.targetSheet.getRow(rowIdx);
-//		List<BigDecimal> nbAmounts = tVos.getNbAmount();
 		this.setAmounts(shipDateMonths, row, colIdx);
 		rowIdx++;
 		
 		row = this.targetSheet.getRow(rowIdx);
-//		List<BigDecimal> dtAmounts = tVos.getDtAmount();
 		this.setAmounts(shipDateMonths, row, colIdx);
 		rowIdx++;
 		
 		row = this.targetSheet.getRow(rowIdx);
-//		List<BigDecimal> svrAmounts = tVos.getSvrAmount();
 		this.setAmounts(shipDateMonths, row, colIdx);
 		rowIdx++;
 		
 		row = this.targetSheet.getRow(rowIdx);
-//		List<BigDecimal> mntAmounts = tVos.getMntAmount();
 		this.setAmounts(shipDateMonths, row, colIdx);
 		rowIdx++;
 		
 		row = this.targetSheet.getRow(rowIdx);
-//		List<BigDecimal> prjAmounts = tVos.getPrjAmount();
 		this.setAmounts(shipDateMonths, row, colIdx);
 		rowIdx++;
 		
 		row = this.targetSheet.getRow(rowIdx);
-//		List<BigDecimal> totalAmounts = tVos.getTotalAmount();
 		this.setAmounts(shipDateMonths, row, colIdx);
 		rowIdx++;
 		
 		row = this.targetSheet.getRow(rowIdx);
-//		List<BigDecimal> percents = tVos.getPercent();
 		this.setPercents(shipDateMonths, row, colIdx);
 		rowIdx++;
 	}
