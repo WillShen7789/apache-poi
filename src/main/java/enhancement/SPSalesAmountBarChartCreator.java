@@ -23,28 +23,20 @@ public class SPSalesAmountBarChartCreator {
 	static final String SP_SALES_AMOUNT_BAR_SHEET_NAME = "SP Sales Amount Bar chart"; 
 	
 	static final String MODEL_INTER_STYLE_KEY = "modelInterStyle";
-	
 	static final String MODEL_LAST_STYLE_KEY = "modelLastStyle";
-	
 	static final String AMOUNT_INTER_STYLE_KEY = "amountInterStyle";
-	
 	static final String AMOUNT_LAST_STYLE_KEY = "amountLastStyle";
-	
 	static final String FG_INTER_STYLE_KEY = "fgInterStyle";
-	
 	static final String FG_LAST_STYLE_KEY = "fgLastStyle";
-	
 	static final String PERCENT_INTER_STYLE_KEY = "percentInterStyle";
-	
 	static final String PERCENT_LAST_STYLE_KEY = "percentLastStyle";
 	
 	static final int TITLE_ROW_INDEX = 1;
-	
 	static final int TITLE_COLUMN_INDEX = 1;
-	
 	static final int START_ROW_INDEX = 2;
-	
 	static final int START_COLUMN_INDEX = 2;
+	
+	static final String SP_SALES_AMOUNT_ANALYSIS_SHEET_NAME = "SP Sales Amount Analysis";
 	
 	private DataFormat dataFormat = null;
 	
@@ -108,29 +100,29 @@ public class SPSalesAmountBarChartCreator {
 		SPSalesAmountBarCharVo vo = new SPSalesAmountBarCharVo();
 		vo.setShipDateMonth("2020-01");
 		vo.setBsAmount(new BigDecimal("0.93426605"));
-		vo.setOdmPartsAmount(new BigDecimal("1.86"));
-		vo.setFgAmount(new BigDecimal("423.53"));
+//		vo.setOdmPartsAmount(new BigDecimal("1.86"));
+//		vo.setFgAmount(new BigDecimal("423.53"));
 		vos.add(vo);
 		
 		vo = new SPSalesAmountBarCharVo();
 		vo.setShipDateMonth("2020-02");
 		vo.setBsAmount(new BigDecimal("1.05057919"));
-		vo.setOdmPartsAmount(new BigDecimal("0.74"));
-		vo.setFgAmount(new BigDecimal("423.53"));
+//		vo.setOdmPartsAmount(new BigDecimal("0.74"));
+//		vo.setFgAmount(new BigDecimal("423.53"));
 		vos.add(vo);
 		
 		vo = new SPSalesAmountBarCharVo();
 		vo.setShipDateMonth("2020-03");
 		vo.setBsAmount(new BigDecimal("1.41310465"));
-		vo.setOdmPartsAmount(new BigDecimal("3.43"));
-		vo.setFgAmount(new BigDecimal("752.21"));
+//		vo.setOdmPartsAmount(new BigDecimal("3.43"));
+//		vo.setFgAmount(new BigDecimal("752.21"));
 		vos.add(vo);
 		
 		vo = new SPSalesAmountBarCharVo();
 		vo.setShipDateMonth("2020-04");
 		vo.setBsAmount(new BigDecimal("0"));
-		vo.setOdmPartsAmount(new BigDecimal("2.16"));
-		vo.setFgAmount(new BigDecimal("0"));
+//		vo.setOdmPartsAmount(new BigDecimal("2.16"));
+//		vo.setFgAmount(new BigDecimal("0"));
 		vos.add(vo);
 		
 		return vos;
@@ -158,20 +150,20 @@ public class SPSalesAmountBarChartCreator {
 			} else {
 				tvos.getBsAmount().add(vo.getBsAmount());
 			}
-			if(tvos.getOdmPartsAmount() == null) {
-				List<BigDecimal> odmPartsAmount = new ArrayList<BigDecimal>();
-				odmPartsAmount.add(vo.getOdmPartsAmount());
-				tvos.setOdmPartsAmount(odmPartsAmount);
-			} else {
-				tvos.getOdmPartsAmount().add(vo.getOdmPartsAmount());
-			}
-			if(tvos.getFgAmount() == null) {
-				List<BigDecimal> fgAmount = new ArrayList<BigDecimal>();
-				fgAmount.add(vo.getFgAmount());
-				tvos.setFgAmount(fgAmount);
-			} else {
-				tvos.getFgAmount().add(vo.getFgAmount());
-			}
+//			if(tvos.getOdmPartsAmount() == null) {
+//				List<BigDecimal> odmPartsAmount = new ArrayList<BigDecimal>();
+//				odmPartsAmount.add(vo.getOdmPartsAmount());
+//				tvos.setOdmPartsAmount(odmPartsAmount);
+//			} else {
+//				tvos.getOdmPartsAmount().add(vo.getOdmPartsAmount());
+//			}
+//			if(tvos.getFgAmount() == null) {
+//				List<BigDecimal> fgAmount = new ArrayList<BigDecimal>();
+//				fgAmount.add(vo.getFgAmount());
+//				tvos.setFgAmount(fgAmount);
+//			} else {
+//				tvos.getFgAmount().add(vo.getFgAmount());
+//			}
 		}
 		return tvos;
 	}
@@ -207,12 +199,12 @@ public class SPSalesAmountBarChartCreator {
     	
 		row = this.targetSheet.getRow(rowIdx);
 		List<BigDecimal> nbAmounts = tVos.getBsAmount();
-		this.setAmounts(nbAmounts, row, colIdx);
+		this.setBS(nbAmounts, row, colIdx);
 		rowIdx++;
 		
 		row = this.targetSheet.getRow(rowIdx);
-		List<BigDecimal> dtAmounts = tVos.getOdmPartsAmount();
-		this.setAmounts(dtAmounts, row, colIdx);
+//		List<BigDecimal> dtAmounts = tVos.getOdmPartsAmount();
+		this.setOdmParts(shipDateMonths, row, colIdx);
 		rowIdx++;
 		
 		row = this.targetSheet.getRow(rowIdx);
@@ -220,8 +212,8 @@ public class SPSalesAmountBarChartCreator {
 		rowIdx++;
 		
 		row = this.targetSheet.getRow(rowIdx);
-		List<BigDecimal> mntAmounts = tVos.getFgAmount();
-		this.setFGs(mntAmounts, row, colIdx);
+//		List<BigDecimal> mntAmounts = tVos.getFgAmount();
+		this.setFGs(shipDateMonths, row, colIdx);
 		rowIdx++;
 		
 		row = this.targetSheet.getRow(rowIdx);
@@ -252,14 +244,14 @@ public class SPSalesAmountBarChartCreator {
 		lastColCell.setCellValue("Total");
 	}
 	
-	private void setAmounts(List<BigDecimal> amounts, Row row, int colIdx) {
-		for (int m = 0; m < amounts.size(); m++) {
+	private void setBS(List<BigDecimal> bss, Row row, int colIdx) {
+		for (int m = 0; m < bss.size(); m++) {
 			Cell cell = row.getCell(colIdx);
 			if(cell==null) {
 				cell = row.createCell(colIdx);
 			}
 			cell.setCellStyle(this.styleMap.get(AMOUNT_INTER_STYLE_KEY));
-			BigDecimal nbAmount = amounts.get(m);
+			BigDecimal nbAmount = bss.get(m);
 			cell.setCellValue(nbAmount.doubleValue());
 			colIdx++;
 		}
@@ -270,7 +262,35 @@ public class SPSalesAmountBarChartCreator {
 		lastColCell.setCellType(CellType.FORMULA);
 		lastColCell.setCellStyle(this.styleMap.get(AMOUNT_LAST_STYLE_KEY));
 		CellReference cellRef1 = new CellReference(row.getRowNum(),START_COLUMN_INDEX);
-		CellReference cellRef2 = new CellReference(row.getRowNum(),START_COLUMN_INDEX + amounts.size() -1);
+		CellReference cellRef2 = new CellReference(row.getRowNum(),START_COLUMN_INDEX + bss.size() -1);
+		lastColCell.setCellFormula(String.format("SUM(%s:%s)", cellRef1.formatAsString(),cellRef2.formatAsString()));
+	}
+	
+	private void setOdmParts(List<String> shipDateMonths, Row row, int colIdx) {
+		final String REF_SHEET_NAME = SP_SALES_AMOUNT_ANALYSIS_SHEET_NAME;
+		final int ODM_PARTS_REF_ROW_NUM = 19;
+		final int ODM_PARTS_REF_COL_NUM_OFFSET = -1;
+		int dataSize = shipDateMonths.size();
+		for (int m = 0; m < dataSize; m++) {
+			Cell cell = row.getCell(colIdx);
+			if(cell==null) {
+				cell = row.createCell(colIdx);
+			}
+			cell.setCellType(CellType.FORMULA);
+			cell.setCellStyle(this.styleMap.get(AMOUNT_INTER_STYLE_KEY));
+			String colString = CellReference.convertNumToColString(colIdx + ODM_PARTS_REF_COL_NUM_OFFSET);
+			String refCell = String.format("'%s'!%s%d", REF_SHEET_NAME,colString,ODM_PARTS_REF_ROW_NUM);
+			cell.setCellFormula(String.format("IFERROR(%s,0)",refCell));
+			colIdx++;
+		}
+		Cell lastColCell = row.getCell(colIdx);
+		if(lastColCell==null) {
+			lastColCell = row.createCell(colIdx);
+		}
+		lastColCell.setCellType(CellType.FORMULA);
+		lastColCell.setCellStyle(this.styleMap.get(AMOUNT_LAST_STYLE_KEY));
+		CellReference cellRef1 = new CellReference(row.getRowNum(),START_COLUMN_INDEX);
+		CellReference cellRef2 = new CellReference(row.getRowNum(),START_COLUMN_INDEX + dataSize -1);
 		lastColCell.setCellFormula(String.format("SUM(%s:%s)", cellRef1.formatAsString(),cellRef2.formatAsString()));
 	}
 	
@@ -298,15 +318,20 @@ public class SPSalesAmountBarChartCreator {
 		lastColCell.setCellFormula(String.format("SUM(%s:%s)", cellRef1.formatAsString(),cellRef2.formatAsString()));
 	}
 	
-	private void setFGs(List<BigDecimal> amounts, Row row, int colIdx) {
-		for (int m = 0; m < amounts.size(); m++) {
+	private void setFGs(List<String> shipDateMonths, Row row, int colIdx) {
+		final String REF_SHEET_NAME = SP_SALES_AMOUNT_ANALYSIS_SHEET_NAME;
+		final int ODM_PARTS_REF_ROW_NUM = 33;
+		final int ODM_PARTS_REF_COL_NUM_OFFSET = -1;
+		for (int m = 0; m < shipDateMonths.size(); m++) {
 			Cell cell = row.getCell(colIdx);
 			if(cell==null) {
 				cell = row.createCell(colIdx);
 			}
+			cell.setCellType(CellType.FORMULA);
 			cell.setCellStyle(this.styleMap.get(FG_INTER_STYLE_KEY));
-			BigDecimal nbAmount = amounts.get(m);
-			cell.setCellValue(nbAmount.doubleValue());
+			String colString = CellReference.convertNumToColString(colIdx + ODM_PARTS_REF_COL_NUM_OFFSET);
+			String refCell = String.format("'%s'!%s%d", REF_SHEET_NAME,colString,ODM_PARTS_REF_ROW_NUM);
+			cell.setCellFormula(String.format("IFERROR(%s,0)",refCell));
 			colIdx++;
 		}
 		Cell lastColCell = row.getCell(colIdx);
@@ -316,7 +341,7 @@ public class SPSalesAmountBarChartCreator {
 		lastColCell.setCellType(CellType.FORMULA);
 		lastColCell.setCellStyle(this.styleMap.get(FG_LAST_STYLE_KEY));
 		CellReference cellRef1 = new CellReference(row.getRowNum(),START_COLUMN_INDEX);
-		CellReference cellRef2 = new CellReference(row.getRowNum(),START_COLUMN_INDEX + amounts.size() -1);
+		CellReference cellRef2 = new CellReference(row.getRowNum(),START_COLUMN_INDEX + shipDateMonths.size() -1);
 		lastColCell.setCellFormula(String.format("SUM(%s:%s)", cellRef1.formatAsString(),cellRef2.formatAsString()));
 	}
 	
@@ -330,7 +355,7 @@ public class SPSalesAmountBarChartCreator {
 			cell.setCellStyle(this.styleMap.get(PERCENT_INTER_STYLE_KEY));
 			CellReference cRef1 = new CellReference(row.getRowNum()-2,colIdx);
 			CellReference cRef2 = new CellReference(row.getRowNum()-1,colIdx);
-			cell.setCellFormula(String.format("%s/%s", cRef1.formatAsString(),cRef2.formatAsString()));
+			cell.setCellFormula(String.format("IFERROR(%s/%s,0)", cRef1.formatAsString(),cRef2.formatAsString()));
 			colIdx++;
 		}
 		Cell lastColCell = row.getCell(colIdx);
@@ -343,6 +368,6 @@ public class SPSalesAmountBarChartCreator {
 		lastColCell.setCellStyle(style);
 		CellReference cellRef1 = new CellReference(row.getRowNum(),START_COLUMN_INDEX);
 		CellReference cellRef2 = new CellReference(row.getRowNum(),START_COLUMN_INDEX + dataSize -1);
-		lastColCell.setCellFormula(String.format("%s/%s", cellRef1.formatAsString(),cellRef2.formatAsString()));
+		lastColCell.setCellFormula(String.format("IFERROR(%s/%s,0)", cellRef1.formatAsString(),cellRef2.formatAsString()));
 	}
 }

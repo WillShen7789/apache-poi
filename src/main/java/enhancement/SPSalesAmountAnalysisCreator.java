@@ -16,7 +16,7 @@ public class SPSalesAmountAnalysisCreator {
 	
 	static final String SOURCE_DIR = "src\\main\\resources\\source\\enhancement";
 	
-	static final String TEMPLATE_NAME = "SP Sales Amount Analysis 20200716.xlsx";
+	static final String TEMPLATE_NAME = "SP Sales Amount Analysis 20200717.xlsx";
 	
 	static final String DESTINATION_DIR = "src\\main\\resources\\result\\enhancement";
 	
@@ -85,7 +85,13 @@ public class SPSalesAmountAnalysisCreator {
     private void outputWookbook() throws IOException {
     	try { 
     		File excelFile = new File(DESTINATION_DIR,String.format(DESTINATION_FILE_NAME_FORMAT, simpleDateFormat.format(new Date())));
-            this.fileOS = new FileOutputStream(excelFile); 
+    		if(!excelFile.getParentFile().isDirectory()) {
+    			if(!excelFile.getParentFile().mkdirs()) {
+    				System.out.println(String.format("%s mkdirs failed.", excelFile.getParentFile().getAbsolutePath())); 
+    				return;
+    			}
+    		}
+    		this.fileOS = new FileOutputStream(excelFile); 
             this.workbook.write(this.fileOS); 
             System.out.println(String.format("%s written successfully on disk.", excelFile.getName())); 
         } 
