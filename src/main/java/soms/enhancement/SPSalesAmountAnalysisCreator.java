@@ -1,4 +1,4 @@
-package enhancement;
+package soms.enhancement;
 
 import java.io.File;
 import java.io.FileInputStream;
