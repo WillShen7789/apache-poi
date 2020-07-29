@@ -15,12 +15,7 @@ public class TestYearMonth {
         String shipMonthTo = "02";
 		YearMonth start = YearMonth.of(Integer.parseInt(shipYearFrom), Integer.parseInt(shipMonthFrom));
 		YearMonth end = YearMonth.of(Integer.parseInt(shipYearTo), Integer.parseInt(shipMonthTo));
-		List<String> yearMonths = new ArrayList<String>();
-		yearMonths.add("'"+start.format(DateTimeFormatter.ofPattern("yyyy-MM"))+"'");
-		while (start.isBefore(end)) {
-			start = start.plusMonths(1);
-			yearMonths.add("'"+start.format(DateTimeFormatter.ofPattern("yyyy-MM"))+"'");
-		}
+        List<String> yearMonths = getYearMonthsFromStartToEnd(start,end);
 		System.out.println(yearMonths);
 		String yearMonthsArray = "";
 		if (CollectionUtils.isNotEmpty(yearMonths)) {
@@ -28,4 +23,21 @@ public class TestYearMonth {
 		}
 		System.out.println("yearMonthsArray : " + yearMonthsArray);
 	}
+	
+    private static List<String> getYearMonthsFromStartToEnd(YearMonth start,YearMonth end){
+		List<String> yearMonths = new ArrayList<String>();
+		yearMonths.add("'"+start.format(DateTimeFormatter.ofPattern("yyyy-MM"))+"'");
+		while (start.isBefore(end)) {
+			start = start.plusMonths(1);
+			yearMonths.add("'"+start.format(DateTimeFormatter.ofPattern("yyyy-MM"))+"'");
+		}
+		return yearMonths;
+    }
+    
+    private static String getYearMonthsParameter(List<String> yearMonths) {
+    	if (CollectionUtils.isEmpty(yearMonths)) {
+    		return "";
+    	}
+    	return "(" + String.join(",", yearMonths) + ") ";
+    }
 }

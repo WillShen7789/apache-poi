@@ -1,4 +1,4 @@
-package soms.enhancement;
+package com.acer.soms.excel.spsalesamountanalysis;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,11 +12,14 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.acer.soms.excel.odmspsalesamount.OdmSPSalesAmountCreator;
+import com.acer.soms.excel.spsalesamountbar.SPSalesAmountBarChartCreator;
+
 public class SPSalesAmountAnalysisCreator {
 	
 	static final String SOURCE_DIR = "src\\main\\resources\\source\\enhancement";
 	
-	static final String TEMPLATE_NAME = "SP Sales Amount Analysis 20200717.xlsx";
+	static final String TEMPLATE_NAME = "SP Sales Amount Analysis 20200727.xlsx";
 	
 	static final String DESTINATION_DIR = "src\\main\\resources\\result\\enhancement";
 	

@@ -1,4 +1,4 @@
-package soms.enhancement;
+package com.acer.soms.excel.odmspsalesamount;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

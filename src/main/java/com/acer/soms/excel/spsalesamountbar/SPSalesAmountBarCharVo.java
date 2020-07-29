@@ -1,4 +1,4 @@
-package soms.enhancement;
+package com.acer.soms.excel.spsalesamountbar;
 
 import java.math.BigDecimal;
 
